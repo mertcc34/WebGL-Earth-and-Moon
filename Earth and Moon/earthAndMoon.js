@@ -174,25 +174,40 @@ function render() {
 
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-
-    
     eye = vec3(radius*Math.sin(theta)*Math.cos(phi),
         radius*Math.sin(theta)*Math.sin(phi), radius*Math.cos(theta));
-
 
     modelViewMatrix = lookAt(eye, at , up);
     projectionMatrix = ortho(left, right, bottom, ytop, near, far);
 
     theta2 += 1.0;
-    if(1){
-        orbitX +=0.005;
+    
+    if(j==800){
+        j=0;
+    }
+    if(j<200){
+        orbitX +=0.01;
         orbitY +=0;
-        orbitZ +=0.005;
+        orbitZ +=0.01;
+    }else if(j<400){
+        orbitX +=0.01;
+        orbitY +=0;
+        orbitZ -=0.01;
+    }
+    else if(j<600){
+        orbitX -=0.01;
+        orbitY +=0;
+        orbitZ -=0.01;
+    }
+    else if(j<800){
+        orbitX -=0.01;
+        orbitY +=0;
+        orbitZ +=0.01;
     }
     
     ctm = mat4();
 
-    ctm = mult(ctm, translate(1.0, 0, 0));
+    ctm = mult(ctm, translate(0.5, 0, 0));
     //ctm = mult(ctm, rotateX(theta2));
     ctm = mult(ctm, rotateY(theta2));
     //ctm = mult(ctm, rotateZ(theta2));
@@ -207,7 +222,7 @@ function render() {
     }
 
     ctm = mat4();
-    ctm = mult(ctm, translate(-1.0, 0, 0));
+    ctm = mult(ctm, translate(-1.5, 0, 0));
     ctm = mult(ctm, translate(orbitX, orbitY, orbitZ));
     //ctm = mult(ctm, rotateX(theta2));
     ctm = mult(ctm, rotateY(theta2));
@@ -223,7 +238,7 @@ function render() {
     }
 
     j++;
-    //console.log(phi);
+    console.log(j);
 
     window.requestAnimFrame(render);
 }
