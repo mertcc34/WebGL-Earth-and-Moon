@@ -10,7 +10,6 @@ var index = 0;
 var pointsArray = [];
 var normalsArray = [];
 
-
 var near = -10;
 var far = 10;
 var radius = 1.5;
@@ -19,7 +18,6 @@ var phi    = 0.0;
 var dr = 5.0 * Math.PI/180.0;
 
 var j = 0;
-
 
 var theta2 = 0;
 
@@ -33,15 +31,15 @@ var vb = vec4(0.0, 0.942809, 0.333333, 1);
 var vc = vec4(-0.816497, -0.471405, 0.333333, 1);
 var vd = vec4(0.816497, -0.471405, 0.333333,1);
 
-var lightPosition = vec4(0, 0, 1.0, 0.0 );
-var lightAmbient = vec4(0.0, 0.0, 0, 1.0 );
+var lightPosition = vec4(-1.0, 0, 1.0, 0.0 );
+var lightAmbient = vec4(1.0, 1.0, 1.0, 1.0 );
 var lightDiffuse = vec4( 1.0, 1.0, 1.0, 1.0 );
 var lightSpecular = vec4( 1.0, 1.0, 1.0, 1.0 );
 
 var materialAmbient = vec4( 0, 0, 1.0, 1.0 );
 var materialDiffuse = vec4( 1.0, 1.0, 1.0, 1.0 );
 var materialSpecular = vec4( 1.0, 1.0, 1.0, 1.0 );
-var materialShininess = 2.0;
+var materialShininess = 200.0;
 
 var ctm;
 var ambientColor, diffuseColor, specularColor;
@@ -52,7 +50,6 @@ var modelViewMatrixLoc, projectionMatrixLoc;
 var eye;
 var at = vec3(0.0, 0.0, 0.0);
 var up = vec3(0.0, 1.0, 0.0);
-
 
 var orbitX = 0;
 var orbitY= 0;
@@ -95,7 +92,6 @@ function divideTriangle(a, b, c, count) {
         triangle( a, b, c );
     }
 }
-
 
 function tetrahedron(a, b, c, d, n) {
     divideTriangle(a, b, c, n);
@@ -151,8 +147,6 @@ window.onload = function init() {
     modelViewMatrixLoc = gl.getUniformLocation( program, "modelViewMatrix" );
     projectionMatrixLoc = gl.getUniformLocation( program, "projectionMatrix" );
 
-    document.getElementById("Button0").onclick = function(){radius *= 2.0;};
-    document.getElementById("Button1").onclick = function(){radius *= 0.5;};
     document.getElementById("Button2").onclick = function(){theta += dr;};
     document.getElementById("Button3").onclick = function(){theta -= dr;};
     document.getElementById("Button4").onclick = function(){phi += dr;};
@@ -189,13 +183,12 @@ function render() {
     modelViewMatrix = lookAt(eye, at , up);
     projectionMatrix = ortho(left, right, bottom, ytop, near, far);
 
-    theta2 += 2.0;
+    theta2 += 1.0;
     if(1){
         orbitX +=0.005;
         orbitY +=0;
         orbitZ +=0.005;
     }
-    
     
     ctm = mat4();
 
@@ -212,7 +205,6 @@ function render() {
     for( var i=0; i<index; i+=3){
         gl.drawArrays( gl.TRIANGLES, i, 3 );
     }
-
 
     ctm = mat4();
     ctm = mult(ctm, translate(-1.0, 0, 0));
@@ -231,7 +223,7 @@ function render() {
     }
 
     j++;
-    console.log(j);
+    //console.log(phi);
 
     window.requestAnimFrame(render);
 }
