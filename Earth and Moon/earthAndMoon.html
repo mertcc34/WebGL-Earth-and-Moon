@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+    
+<!--
+    
+    
+
+
+
+-->
 
 <script id="vertex-shader" type="x-shader/x-vertex">
 
@@ -58,12 +66,7 @@ void main()
 }
 </script>
 
-<p> </p>
-<button id = "Button2">Increase theta</button>
-<button id = "Button3">Decrease theta</button>
-<button id = "Button4">Increase phi</button>
-<button id = "Button5">Decrease phi</button>
-<p> </p>
+
 
 
 <p></p>
@@ -73,9 +76,23 @@ void main()
 <script type="text/javascript" src="../Common/MV.js"></script>
 <script type="text/javascript" src="earthAndMoon.js"></script>
 
+
 <body>
+
 <canvas id="gl-canvas" width="512" height="512">
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
+    <br>
+    <input type="button" id="b1" value="Double Time">
+    <input type="button" id="b2" value="Normal Day">
+    <input type="button" id="b3" value="Half Time">
+    <br><br>
+    <input type="button" id="b4" value="Enable Light">
+    <input type="button" id="b5" value="Disable Light">
+    <br><br>
+    <input type="button" id="b6" value="Change Viewpoint">
+    
+    
+    
 </body>
 </html>

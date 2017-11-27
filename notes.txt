@@ -1,0 +1,22 @@
+Using buttons, the program should be able to enable and disable lighting. When lighting is disabled, the planet and moon should be treated as blue and grey solid spheres. When lighting is enabled, the light source should be treated as an off-white diffuse directional light source with white specular component coming in from the left in the same plane as the planet and moon. The planet and moon should be treated as solid spheres. The material properties should be adjusted to make the planet blue-green with white highlights, and the moon grey with more diffuse white highlights.
+
+The initial view point should be set to a point 4 times the radius of the moon’s orbit, and at right angle to the line between the light source and the planet, in the plane of the planet and moon. The user should be able to use buttons to set this view or change it to a view from 60 degrees above the plane. Assuming that you use orthogonal projection, you should make sure to set the parameters so that the entire orbit of the moon is visible in both cases.
+
+Programming style:
+
+Your code should be indented and well commented. Use descriptive variable names.
+
+Each file should start with a comment that includes your name, the name of the class (CSC350) and the name of the assignment (Project 3).
+ 
+
+This criterion is linked to a Learning OutcomePlanet that rotates on its axis correctly	
+
+This criterion is linked to a Learning OutcomeMoon that orbits around the planet correctly	
+
+This criterion is linked to a Learning OutcomeColors correct when light source is disabled	
+
+This criterion is linked to a Learning OutcomeLighting correctly implemented, with correct light and material parameters	
+
+This criterion is linked to a Learning OutcomeCorrect viewpoint and ability to change it	
+
+This criterion is linked to a Learning OutcomeProgramming style	
